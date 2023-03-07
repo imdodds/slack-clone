@@ -16,7 +16,6 @@ function App() {
             <Sidebar />
             <Routes>
               <Route path='/' element={<Home />}>
-                {/* Chat */}
               </Route>
             </Routes>
           </AppBody>
