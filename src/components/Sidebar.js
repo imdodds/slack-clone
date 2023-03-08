@@ -1,7 +1,8 @@
 import React from 'react'
 import { SidebarContainer, SidebarHeader, SidebarInfo } from '../styles/Sidebar.style';
 import { useCollection } from 'react-firebase-hooks/firestore'
-import { db } from '../firebase';
+import { auth, db } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import CreateIcon from '@mui/icons-material/Create';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
@@ -18,7 +19,9 @@ import SidebarOption from './SidebarOption';
 
 function Sidebar() {
 
-  const [channels, loading, error] = useCollection(db.collection('rooms'));
+  const user = useAuthState(auth);
+
+  const [channels] = useCollection(db.collection('rooms'));
 
   return (
     <SidebarContainer>
@@ -27,7 +30,7 @@ function Sidebar() {
           <h2>Dodds Inc</h2>
           <h3>
             <FiberManualRecordIcon />
-            Ian Dodds
+            {user[0]?.displayName}
           </h3>
         </SidebarInfo>
         <CreateIcon />
