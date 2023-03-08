@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { ChatInputContainer } from '../styles/ChatInput.styles';
+import { ChatInputContainer } from '../styles/ChatInput.style';
 import { Button } from '@mui/material';
 import { db } from '../firebase';
 import firebase from 'firebase/compat/app';
 
 
-function ChatInput({ channelName, channelId }) {
+function ChatInput({ channelName, channelId, chatRef }) {
 
   const [input, setInput] = useState('');
 
@@ -21,6 +21,10 @@ function ChatInput({ channelName, channelId }) {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       user: 'Ian Dodds',
       userImage: 'https://avatars.githubusercontent.com/u/104378047?v=4'
+    });
+
+    chatRef.current.scrollIntoView({
+      behavior: 'smooth',
     });
 
     setInput('');

@@ -43,6 +43,10 @@ const ChatContainer = styled.div`
   margin-top: 60px;
 `;
 
+const ChatBottom = styled.div`
+  padding-bottom: 200px;
+`;
+
 const ChatMessages = styled.div``;
 
-export { ChatHeader, ChatHeaderLeft, ChatHeaderRight, ChatContainer, ChatMessages };
+export { ChatHeader, ChatHeaderLeft, ChatHeaderRight, ChatContainer, ChatBottom, ChatMessages };
